@@ -1,6 +1,6 @@
 
 ## this is the function to set the matrix and get the matrix 
-##returns a list of functions
+## and this returns a list of functions
 
 makeCacheMatrix <- function(x = matrix()) {
   
@@ -26,15 +26,19 @@ makeCacheMatrix <- function(x = matrix()) {
 cacheSolve <- function(x, ...) {
         
   m<-x$getmatrix()
+  ##check for the matrix already existing,
+
   if(!is.null(m)){
     message("getting cached data")
     return(m)
   }
   matrix<-x$get()
+  
   ##inverse the matrx here 
   m<-solve(matrix, ...)
-  ## call the setmatrix and return the matrix
+  ## call the setmatrix from makeCacheMatrix 
   x$setmatrix(m)
+  ## return the reverse matrix here
   m
 }
 
